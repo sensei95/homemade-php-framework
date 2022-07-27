@@ -11,5 +11,9 @@
       "email": "elk.dev.official@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "league/route": "^5.1",
+    "laminas/laminas-diactoros": "^2.13",
+    "laminas/laminas-httphandlerrunner": "^2.1"
+  }
 }
