@@ -1,8 +1,10 @@
 <?php
 
+use League\Route\Router;
+
 require_once __DIR__.'/../bootstrap/app.php';
 
-$router = new League\Route\Router();
+$router = $container->get(Router::class);
 
 require_once __DIR__.'/../routes/web.php';
 

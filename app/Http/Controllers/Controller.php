@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Psr\Http\Message\ResponseInterface;
+use Laminas\Diactoros\Response;
 
 class Controller
 {
-    public ResponseInterface $response;
+    protected Response $response;
 
-    public function __construct(ResponseInterface $response)
+    public function __construct()
     {
-        $this->response = $response;
+        $this->response = new Response();
     }
 }

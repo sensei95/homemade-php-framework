@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use League\Route\Router;
 use Laminas\Diactoros\Response;
 use App\Http\Controllers\Controller;
 use Laminas\Diactoros\ServerRequestFactory;
@@ -12,7 +13,7 @@ class AppServiceProvider extends AbstractServiceProvider
     public function provides(string $id): bool
     {
         $services = [
-            Controller::class,
+            Router::class,
             Response::class,
             'request'
         ];
@@ -24,7 +25,11 @@ class AppServiceProvider extends AbstractServiceProvider
     {
         $container = $this->getContainer();
 
-        $container->add(Controller::class)->setShared(true);
+        $container->add(Router::class, function () {
+            return new \League\Route\Router();
+        })->setShared(true);
+
+        $container->add(Response::class)->setShared(true);
 
         $container->add('request', function () {
             return ServerRequestFactory::fromGlobals(

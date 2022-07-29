@@ -1,11 +1,9 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 // map a route
-$router->get('/', function (ServerRequestInterface $request): ResponseInterface {
-    $response = new Laminas\Diactoros\Response();
-    $response->getBody()->write('<h1>Hello, World!</h1>');
-    return $response;
-});
+$router->get('/', [PagesController::class,'home'])->setName('home');
+$router->get('/about', [PagesController::class,'about'])->setName('about');
