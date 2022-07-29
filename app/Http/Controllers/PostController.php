@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-class PostController
+use Psr\Http\Message\ServerRequestInterface;
+
+class PostController extends Controller
 {
-    public function index()
+    public function index(ServerRequestInterface $request)
     {
+        return $this->view->render('posts/index.html.twig');
     }
 
-    public function show()
+    public function show(ServerRequestInterface $request)
     {
+        return $this->view->render('posts/show.html.twig');
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Laminas\Diactoros\Response;
+use App\Views\View;
 
 class Controller
 {
-    protected Response $response;
+    protected View $view;
 
-    public function __construct()
+    public function __construct(View $view)
     {
-        $this->response = new Response();
+        $this->view = $view;
     }
 }

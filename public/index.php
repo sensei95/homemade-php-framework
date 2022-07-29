@@ -8,7 +8,10 @@ $router = $container->get(Router::class);
 
 require_once __DIR__.'/../routes/web.php';
 
-$response = $router->dispatch($container->get('request'));
-
-// send the response to the browser
-(new Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
+try {
+    $response = $router->dispatch($container->get('request'));
+    // send the response to the browser
+    (new Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
+} catch (League\Route\Http\Exception\NotFoundException $e) {
+    die($e->getMessage());
+}
