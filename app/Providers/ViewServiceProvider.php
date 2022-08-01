@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Views\Extensions\RoutePathExtensions;
 use App\Views\View;
 use Laminas\Diactoros\Response;
+use League\Route\Router;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -28,6 +30,8 @@ class ViewServiceProvider extends AbstractServiceProvider
             $twig = new Environment($loader, [
                 'cache' => false,
             ]);
+
+            $twig->addExtension(new RoutePathExtensions($container->get(Router::class), $container->get('request')));
 
             return new View($twig, $container->get(Response::class));
         });

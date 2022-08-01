@@ -1,1 +1,10 @@
-<h1>Posts List</h1>
+{% extends '/layouts/master.html.twig' %}
+{% block title %} List of Posts | {{ parent() }} {% endblock %}
+{% block content %}
+        <h1>Posts List {{ posts | length }}</h1>
+        <ul>
+                {% for post in posts %}
+                        <li><a href="{{ route('posts.show',{'slug':post['slug']}) }}">{{ post['title'] }}</a></li>
+                {% endfor %}
+        </ul>
+{% endblock %}
