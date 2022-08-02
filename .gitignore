@@ -7,3 +7,4 @@ vendor
 vscode
 /vscode
 node_modules
+.env
