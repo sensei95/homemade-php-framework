@@ -1,0 +1,84 @@
+@import url(https://fonts.bunny.net/css?family=abeezee:400|aladin:400|anonymous-pro:400,700);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-medium tracking-tight bg-white;
+    /* font-family: "ABeeZee", sans-serif !important; */
+    /* font-family: 'Aladin', handwriting;*/
+    font-family: "Anonymous Pro", monospace !important;
+  }
+}
+.container{
+  @apply px-6 mx-auto max-w-3xl;
+}
+
+.header {
+  @apply py-4;
+  &__container{
+    @apply px-6 flex justify-between;
+  }
+
+  &__nav{
+    @apply fixed transition-transform duration-300 ease-in-out translate-x-full right-0 h-full bottom-0 top-0 bg-sky-800 z-30 w-48 px-6 grid place-content-center;
+ 
+    &.show{
+      @apply translate-x-0;
+    }
+
+    &-close{
+      @apply transition-colors duration-300 ease-in-out absolute top-4 right-4 text-white text-2xl cursor-pointer hover:bg-sky-900 flex justify-center items-center rounded-full px-1;
+    }
+  }
+
+  &__menu{
+    @apply flex flex-col gap-y-3;
+    .menu__link{
+      @apply text-lg text-white gap-x-4;
+    }
+    .menu__icon{
+      @apply text-2xl;
+    }
+  }
+
+  &__right{
+    @apply flex items-center gap-x-4;
+  }
+
+  &__user{
+    @apply relative;
+
+    .user__menu{
+      @apply absolute top-full right-0 bg-sky-600 text-white w-48 py-2 mt-3 before:absolute before:content-[''] before:w-3 before:h-3 before:bg-inherit before:right-3 before:-top-1.5 before:rotate-45;
+    }
+  }
+
+  &__avatar{
+    @apply h-10 w-10 rounded-full bg-slate-200 block;
+  }
+
+  &__hamberger{
+    &-button{
+      @apply text-2xl text-sky-900;
+    }
+  }
+}
+
+.menu{
+      
+      &__item{
+
+      }
+
+      &__link{
+        @apply flex items-center px-4 py-1.5 gap-x-3 text-base font-medium;
+      
+      }
+
+      &__icon{
+        @apply text-lg;
+      }
+
+    }

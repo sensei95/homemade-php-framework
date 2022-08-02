@@ -1,24 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="/">Blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link {{ routeIs('home') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Home</a>
+<header class="header" x-data="{ open: false }">
+    <div class="container header__container">
+        <a href="{{ route('home') }}" class="header__logo">
+        Elk.Dev
+        </a>
+        <nav class="header__nav" :class="open ? 'show' : ''">
+            <button @click="open = false" class="header__nav-close">
+                <i class="ri-close-line"></i>
+            </button>
+            <ul class="header__menu menu">
+                <li class="menu__item">
+                    <a href="{{ route('home') }}" class="menu__link {{ routeIs('home') ? 'active' : '' }}">
+                        <i class="ri-home-smile-line menu__icon"></i>
+                        Home
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ routeIs('posts.index') ? 'active' : '' }}" href="{{ route('posts.index') }}">Posts</a>
+                <li class="menu__item">
+                    <a href="{{ route('posts.index') }}" class="menu__link {{ routeIs('posts.index') ? 'active' : '' }}">
+                        <i class="ri-article-line menu__icon"></i>
+                        Blog
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('posts.index') }}">Admin</a>
+                <li class="menu__item">
+                    <a href="{{ route('posts.index') }}" class="menu__link {{ routeIs('posts.index') ? 'active' : '' }}">
+                        <i class="ri-home-smile-line menu__icon"></i>
+                        Categories
+                    </a>
                 </li>
             </ul>
-            <form class="d-flex" role="logout">
-                <button class="btn btn-outline-danger" type="submit">Logout</button>
-            </form>
+        </nav>
+        <div class="header__right">
+            <nav class="header__user">
+            <span class="header__avatar">
+                {# <img src="" alt="Elie Kitadi" class="header__avatar-img"> #}
+            </span>
+            <ul class="user__menu menu">
+                <li class="menu__item">
+                    <a href="" class="menu__link">
+                        <i class="ri-dashboard-3-line menu__icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="" class="menu__link">
+                        <i class="ri-article-line menu__icon"></i>
+                        Posts
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="" class="menu__link">
+                        <i class="ri-user-line menu__icon"></i>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__hamberger">
+            <button @click="open = ! open" class="header__hamberger-button">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
         </div>
     </div>
-</nav>
+</header>
