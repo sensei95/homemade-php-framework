@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Views\Extensions\PublicPathExtensions;
 use App\Views\Extensions\RoutePathExtensions;
 use App\Views\View;
 use Laminas\Diactoros\Response;
@@ -32,7 +33,7 @@ class ViewServiceProvider extends AbstractServiceProvider
             ]);
 
             $twig->addExtension(new RoutePathExtensions($container->get(Router::class), $container->get('request')));
-
+            $twig->addExtension(new PublicPathExtensions());
             return new View($twig, $container->get(Response::class));
         });
     }
