@@ -45,7 +45,7 @@
   @apply relative;
 }
 .header__user .user__menu {
-  @apply absolute top-full right-0 bg-sky-600 text-white w-48 py-2 mt-3 before:absolute before:content-[""] before:w-3 before:h-3 before:bg-inherit before:right-3 before:-top-1.5 before:rotate-45;
+  @apply hidden absolute top-full right-0 bg-sky-600 text-white w-48 py-2 mt-3 before:absolute before:content-[""] before:w-3 before:h-3 before:bg-inherit before:right-3 before:-top-1.5 before:rotate-45;
 }
 .header__avatar {
   @apply h-10 w-10 rounded-full bg-slate-200 block;
@@ -59,4 +59,54 @@
 }
 .menu__icon {
   @apply text-lg;
+}
+
+/** -- Form --- **/
+.form__title {
+  @apply font-extrabold text-5xl my-6;
+}
+.form__section-header {
+  @apply p-5 grid gap-y-2;
+}
+.form__section-title {
+  @apply text-2xl font-medium leading-6 text-gray-900;
+}
+.form__section-text {
+  @apply text-base text-gray-600;
+}
+.form__section-body {
+  @apply px-5;
+}
+.form__section-body form {
+  @apply grid gap-y-4;
+}
+.form__action {
+  @apply px-4 py-3 text-right bg-gray-50 sm:px-6;
+}
+.form__action button {
+  @apply inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
+
+/** --- Fields --- **/
+.field {
+  @apply grid gap-y-3;
+}
+.field__label {
+  @apply block text-base font-semibold text-gray-700;
+}
+.field__input {
+  @apply relative;
+}
+.field__input input,
+.field__input select {
+  @apply block w-full relative z-10 h-10 outline-none border border-slate-300 bg-transparent pl-12 pr-4;
+}
+.field__checkbox {
+  @apply flex items-center h-5 gap-x-2;
+}
+.field__checkbox input {
+  @apply w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500;
+}
+.field__icon {
+  @apply absolute  h-full top-0 left-0 px-3.5 grid place-items-center text-xl;
 }/*# sourceMappingURL=tailwind.css.map */

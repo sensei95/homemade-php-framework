@@ -7,6 +7,7 @@ use App\Entities\Post;
 use App\Entities\Tag;
 use DateTime;
 use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Twig\Error\LoaderError;
@@ -46,36 +47,46 @@ class PostController extends Controller
 
     public function create(ServerRequestInterface $request): ResponseInterface
     {
-        $tags = ['php','laravel','laravel-livewire','alpinejs'];
+        $tags = $this->entityManager->find(Tag::class, 4);
+        dd($tags);
+        // $tags = ['php','laravel','laravel-livewire','alpinejs'];
 
-        $post = (new Post())
-            ->setTitle('create a web app with the Tall Stack')
-            ->setSlug('create-a-web-app-with-the-tall-stack')
-            ->setContent('Let create a wonderfull Tall Stack App')
-            ->setIsPublished(false)
-            ->setCreatedAt(new DateTime());
+        // $post = (new Post())
+        //     ->setTitle('create a web app with the Tall Stack')
+        //     ->setSlug('create-a-web-app-with-the-tall-stack')
+        //     ->setContent('Let create a wonderfull Tall Stack App')
+        //     ->setIsPublished(false)
+        //     ->setCreatedAt(new DateTime());
 
-        $category = new Category();
-        $category->setName('web programming')
-            ->setSlug('web-programming')
-            ->setCreatedAt(new DateTime());
+        // $category = new Category();
+        // $category->setName('web programming')
+        //     ->setSlug('web-programming')
+        //     ->setCreatedAt(new DateTime());
 
-        $category->addPost($post);
+        // $category->addPost($post);
 
-        foreach ($tags as $t){
+        // foreach ($tags as $t){
 
-            $tag = (new Tag())->setName($t)->setSlug($t) ->setCreatedAt(new DateTime());
-            $post->addTag($tag);
-        }
+        //     $tag = (new Tag())->setName($t)->setSlug($t) ->setCreatedAt(new DateTime());
+        //     $post->addTag($tag);
+        // }
 
-        $this->entityManager->persist($category);
+        // $this->entityManager->persist($category);
 
-        $this->entityManager->persist($post);
+        // $this->entityManager->persist($post);
 
-        $this->entityManager->flush();
+        // $this->entityManager->flush();
 
-        dd($category, $post, $tags);
+        // dd($category, $post, $tags);
 
-        return new Response();
+        // return new Response();
+
+        return $this->view->render('posts/create.html.twig');
+    }
+
+    public function store(ServerRequest $request): ResponseInterface
+    {
+        dd($request, $request->getParsedBody());
+        // return redirect('/posts');
     }
 }

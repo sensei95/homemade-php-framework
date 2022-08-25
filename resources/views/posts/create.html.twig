@@ -1,0 +1,51 @@
+{% extends '/layouts/master.html.twig' %}
+{% block title %} Add new post | {{ parent() }} {% endblock %}
+{% block content %}
+    <div class="form">
+        <h1 class="form__title">Add new post</h1>
+        <section class=" form__section">
+            <header class="form__section-header">
+                <h3 class="form__section-title">Profile</h3>
+                <p class="form__section-text">This information will be displayed publicly so be careful what you share.</p>
+            </header>
+            <main class="form__section-body">
+                <form action="{{ route('posts.store') }}" method="post">
+                    <div class="field">
+                        <label for="title" class="field__label"> Title </label>
+                        <div class="field__input">
+                            <i class="ri-edit-line field__icon"></i>
+                            <input type="text" name="title" id="title" class="flex-1 block w-full border-gray-300 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md sm:text-sm" placeholder="Write your post's title here">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="category_id" class="field__label"> Category </label>
+                        <div class="field__input">
+                            <i class="ri-edit-line field__icon"></i>
+                            <select name="category_id" id="category_id">
+                                <option value="" selected>Choose post's category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="tags" class="field__label"> tags </label>
+                        <div class="field__input">
+                            <i class="ri-edit-line field__icon"></i>
+                            <select multiple name="tags[]" id="tags">
+                                <option value="" selected>Choose post's category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field__checkbox">
+                            <input id="is_published" name="is_published" type="checkbox" class="">
+                            <label for="is_published">Publish</label>
+                        </div>
+                    </div>
+                    <div class="form__action">
+                        <button type="submit" class="">Create post</button>
+                    </div>
+                </form>
+            </main>
+        </section>
+    </div>
+{% endblock %}

@@ -51,7 +51,7 @@
     @apply relative;
 
     .user__menu{
-      @apply absolute top-full right-0 bg-sky-600 text-white w-48 py-2 mt-3 before:absolute before:content-[''] before:w-3 before:h-3 before:bg-inherit before:right-3 before:-top-1.5 before:rotate-45;
+      @apply hidden absolute top-full right-0 bg-sky-600 text-white w-48 py-2 mt-3 before:absolute before:content-[''] before:w-3 before:h-3 before:bg-inherit before:right-3 before:-top-1.5 before:rotate-45;
     }
   }
 
@@ -81,4 +81,69 @@
         @apply text-lg;
       }
 
+}
+ 
+/** -- Form --- **/
+
+.form{
+  &__title{
+    @apply font-extrabold text-5xl my-6;
+  }
+  &__section{
+
+    &-header{
+      @apply p-5 grid gap-y-2;
     }
+
+    &-title{
+      @apply text-2xl font-medium leading-6 text-gray-900;
+    }
+
+    &-text{
+      @apply text-base text-gray-600;
+    }
+
+    &-body{
+      @apply px-5;
+      form{
+        @apply grid gap-y-4;
+      }
+    }
+  }  
+
+  &__action{
+    @apply px-4 py-3 text-right bg-gray-50 sm:px-6;
+
+    button{
+      @apply inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+    }
+  }
+}
+
+/** --- Fields --- **/
+.field{
+  @apply grid gap-y-3;
+  &__label{
+    @apply block text-base font-semibold text-gray-700;
+  }
+
+  &__input{
+    @apply relative;
+    input,
+    select{
+      @apply block w-full relative z-10 h-10 outline-none border border-slate-300 bg-transparent pl-12 pr-4;
+    }
+  }
+
+  &__checkbox{
+    @apply flex items-center h-5 gap-x-2;
+    input{
+      @apply w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500;
+    }
+  }
+
+  &__icon{
+    @apply absolute  h-full top-0 left-0 px-3.5 grid place-items-center text-xl;
+  }
+}
+
